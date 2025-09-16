@@ -6,6 +6,7 @@ import TransportPooling from './pages/TransportPooling';
 import CropInfo from './pages/CropInfo';
 import About from './components/About';
 import './index.css';
+import "./i18n";
 
 function App() {
   return (

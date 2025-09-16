@@ -46,7 +46,6 @@
   margin-bottom: 3rem;
   max-width: 600px;
 }
-
 /* Glassmorphism Navigation */
 .modern-navbar {
   position: fixed;
@@ -54,18 +53,20 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(25px); /* stronger blur */
+  -webkit-backdrop-filter: blur(25px);
+  background: rgba(10, 10, 10, 0.6); /* slightly more transparent for glass effect */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modern-navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(30px);
+  background: rgba(10, 10, 10, 0.85); /* more solid after scroll */
+  backdrop-filter: blur(30px); /* stronger blur after scroll */
+  -webkit-backdrop-filter: blur(30px);
 }
+
 
 .nav-container {
   max-width: 1400px;
@@ -87,11 +88,7 @@
   gap: 0.5rem;
 }
 
-.modern-logo::before {
-  content: '◉';
-  color: #00ff87;
-  font-size: 1.2rem;
-}
+
 
 .modern-nav-links {
   display: flex;
@@ -562,4 +559,36 @@ html {
   .modern-nav-links {
     display: none;
   }
+}
+/* Language Selector */
+.lang-select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-select:hover {
+  border-color: #00ff87;
+  color: #00ff87;
+}
+
+/* Mobile Language Selector */
+.mobile-menu .lang-select {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Logo Image */
+.logo-image {
+  height: 50px; /* adjust height as needed */
+  width: 250px;
+  object-fit: cover;
 }
