@@ -487,3 +487,79 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #00d4ff 0%, #00ff87 100%);
 }
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(10, 10, 10, 0.95);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  color: #00ff87;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 968px) {
+  .hamburger {
+    display: flex;
+  }
+  .modern-nav-links {
+    display: none;
+  }
+}
