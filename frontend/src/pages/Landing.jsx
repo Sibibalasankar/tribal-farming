@@ -74,7 +74,7 @@
             
             <div className="hero-image-container fade-in-element">
                 <img 
-                src="/hero-img.png" 
+                src="/intro.png" 
                 alt="Advanced Tribal Farming Technology" 
                 className="hero-image-main"
                 />
