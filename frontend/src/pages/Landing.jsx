@@ -139,7 +139,7 @@
                 </p>
             </div>
             <div className="footer-bottom">
-                © 2024 TribalFarm AI. Advanced Agricultural Intelligence Platform.
+                © 2025 TribalFarm AI. Advanced Agricultural Intelligence Platform.
             </div>
             </div>
         </footer>

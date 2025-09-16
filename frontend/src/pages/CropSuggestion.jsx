@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import '../styles/CropSuggestion.css'; // Import the modern CSS
 
 const ModernCropSuggestion = () => {
@@ -9,26 +8,50 @@ const ModernCropSuggestion = () => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Soil types
   const soilTypes = [
-    { id: 'clay', name: 'Clay Soil', icon: '🟫', description: 'Heavy soil with high water retention' },
-    { id: 'sandy', name: 'Sandy Soil', icon: '🟨', description: 'Light soil with good drainage' },
-    { id: 'loamy', name: 'Loamy Soil', icon: '🟧', description: 'Balanced soil with good nutrients' },
-    { id: 'rocky', name: 'Rocky Soil', icon: '⛰️', description: 'Soil with many rocks, common in hills' }
+    { 
+      id: 'clay', 
+      name: 'Clay Soil', 
+      image: '/soil/clay.png',
+      description: 'Heavy soil with high water retention' 
+    },
+    { 
+      id: 'sandy', 
+      name: 'Sandy Soil', 
+      image: '/soil/sandy1.png',
+      description: 'Light soil with good drainage' 
+    },
+    { 
+      id: 'loamy', 
+      name: 'Loamy Soil', 
+      image: '/soil/loamy.png',
+      description: 'Balanced soil with good nutrients' 
+    },
+    { 
+      id: 'rocky', 
+      name: 'Rocky Soil', 
+      image: '/soil/blacksoil.png',
+      description: 'Soil with many rocks, common in hills' 
+    }
   ];
 
+  // Seasons
   const seasons = [
-    { id: 'spring', name: 'Spring', icon: '🌼', description: 'Moderate temperature, rainfall' },
-    { id: 'summer', name: 'Summer', icon: '☀️', description: 'Hot, dry conditions' },
-    { id: 'monsoon', name: 'Monsoon', icon: '🌧️', description: 'Heavy rainfall period' },
-    { id: 'winter', name: 'Winter', icon: '❄️', description: 'Cold temperatures' }
+    { id: 'spring', name: 'Spring', image: '/season/spring.jpg', description: 'Moderate temperature, rainfall' },
+    { id: 'summer', name: 'Summer', image: '/season/summer.jpg', description: 'Hot, dry conditions' },
+    { id: 'monsoon', name: 'Monsoon', image: '/season/monsoon.png', description: 'Heavy rainfall period' },
+    { id: 'winter', name: 'Winter', image: '/season/winter.png', description: 'Cold temperatures' }
   ];
 
+  // Regions
   const regions = [
-    { id: 'foothills', name: 'Foothills', icon: '⛰️', description: 'Lower altitude hilly areas' },
-    { id: 'midhills', name: 'Mid Hills', icon: '🏞️', description: 'Medium altitude areas' },
-    { id: 'highhills', name: 'High Hills', icon: '🗻', description: 'High altitude mountainous areas' }
+    { id: 'foothills', name: 'Foothills', image: '/region/foothill.png', description: 'Lower altitude hilly areas' },
+    { id: 'midhills', name: 'Mid Hills', image: '/region/midhills.png', description: 'Medium altitude areas' },
+    { id: 'highhills', name: 'High Hills', image: '/region/highhills.png', description: 'High altitude mountainous areas' }
   ];
 
+  // Crop data mapping (soil + season)
   const cropData = {
     clay: {
       spring: ['Rice', 'Wheat', 'Barley'],
@@ -56,27 +79,59 @@ const ModernCropSuggestion = () => {
     }
   };
 
+  // Crop images mapping
+const cropImages = {
+  Rice: '/crop/rice.jpg',
+  Wheat: '/crop/Wheat.jpg',
+  Barley: '/crop/Barley.jpg',
+  Cotton: '/crop/Cotton.jpeg',
+  Sugarcane: '/crop/Sugarcane.jpg',
+  Sorghum: '/crop/Sorghum.jpg',
+  Maize: '/crop/Maize.png',
+  Soybean: '/crop/Soybean.jpg',
+  Mustard: '/crop/Mustard.jpg',
+  Carrot: '/crop/Carrot.jpg',
+  Radish: '/crop/Radish.jpg',
+  Potato: '/crop/Potato.jpg',
+  Watermelon: '/crop/Watermelon.jpg',
+  Peanuts: '/crop/Peanuts.jpg',
+  Cassava: '/crop/Cassava.jpg',
+  Corn: '/crop/corn.jpg',
+  Beans: '/crop/Beans.jpg',
+  Pumpkin: '/crop/Pumpkin.jpg',
+  Onion: '/crop/Onion.jpg',
+  Garlic: '/crop/Garlic.jpg',
+  Tomato: '/crop/Tomato.jpg',
+  Cucumber: '/crop/Cucumber.jpg',
+  Lettuce: '/crop/Lettuce.jpg',
+  Squash: '/crop/Squash.jpg',
+  Peas: '/crop/Peas.jpg',
+  Millet: '/crop/Millet.jpg',
+  Buckwheat: '/crop/Buckwheat.jpg',
+  Herbs: '/crop/Herbs.jpg',
+  Sunflower: '/crop/Sunflower.jpg',
+  Quinoa: '/crop/Quinoa.jpg',
+  Lentils: '/crop/Lentils.jpg'
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selectedSoil && selectedSeason && selectedRegion) {
       setIsLoading(true);
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // In a real app, this would be an AI API call
+
+      await new Promise(resolve => setTimeout(resolve, 1500)); // simulate API delay
+
       const suggestedCrops = cropData[selectedSoil][selectedSeason];
-      
-      // Add some details for each crop
+
       const resultsWithDetails = suggestedCrops.map(crop => ({
         name: crop,
-        image: `https://source.unsplash.com/300x300/?${crop.toLowerCase()},agriculture`,
+        image: cropImages[crop] || 'https://placehold.co/300x300?text=Crop',
         suitability: 'High',
         water: 'Moderate',
         harvest: '90-120 days',
         price: '$' + (Math.random() * 5 + 1).toFixed(2) + '/kg'
       }));
-      
+
       setResults(resultsWithDetails);
       setIsLoading(false);
     }
@@ -84,33 +139,21 @@ const ModernCropSuggestion = () => {
 
   return (
     <div className="crop-suggestion-page">
-      {/* Background Animation */}
       <div className="bg-animation">
         <div className="floating-element"></div>
         <div className="floating-element"></div>
       </div>
 
       <div className="modern-container">
-        <motion.h1 
-          className="modern-page-title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          AI Crop Intelligence
-        </motion.h1>
+        <h1 className="modern-page-title">AI Crop Intelligence</h1>
         
         <p className="page-subtitle">
           Neural network-powered crop selection using real-time environmental data, soil analysis, and climate patterns optimized for mountainous terrain.
         </p>
         
-        <motion.div 
-          className="modern-form-container"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <div className="modern-form-container">
           <form onSubmit={handleSubmit}>
+            {/* Soil Selection */}
             <div className="input-section">
               <div className="section-label">Select Soil Type</div>
               <div className="modern-option-grid">
@@ -120,7 +163,14 @@ const ModernCropSuggestion = () => {
                     className={`modern-option-card ${selectedSoil === soil.id ? 'selected' : ''}`}
                     onClick={() => setSelectedSoil(soil.id)}
                   >
-                    <div className="option-icon-modern">{soil.icon}</div>
+                    <div className="option-image-container">
+                      <img 
+                        src={soil.image} 
+                        alt={soil.name}
+                        className="option-image"
+                        onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=Soil'; }}
+                      />
+                    </div>
                     <div className="option-content">
                       <h4 className="option-title">{soil.name}</h4>
                       <p className="option-description">{soil.description}</p>
@@ -130,6 +180,7 @@ const ModernCropSuggestion = () => {
               </div>
             </div>
 
+            {/* Season Selection */}
             <div className="input-section">
               <div className="section-label">Select Season</div>
               <div className="modern-option-grid">
@@ -139,7 +190,14 @@ const ModernCropSuggestion = () => {
                     className={`modern-option-card ${selectedSeason === season.id ? 'selected' : ''}`}
                     onClick={() => setSelectedSeason(season.id)}
                   >
-                    <div className="option-icon-modern">{season.icon}</div>
+                    <div className="option-image-container">
+                      <img 
+                        src={season.image} 
+                        alt={season.name}
+                        className="option-image"
+                        onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=Season'; }}
+                      />
+                    </div>
                     <div className="option-content">
                       <h4 className="option-title">{season.name}</h4>
                       <p className="option-description">{season.description}</p>
@@ -149,6 +207,7 @@ const ModernCropSuggestion = () => {
               </div>
             </div>
 
+            {/* Region Selection */}
             <div className="input-section">
               <div className="section-label">Select Region Type</div>
               <div className="modern-option-grid">
@@ -158,7 +217,14 @@ const ModernCropSuggestion = () => {
                     className={`modern-option-card ${selectedRegion === region.id ? 'selected' : ''}`}
                     onClick={() => setSelectedRegion(region.id)}
                   >
-                    <div className="option-icon-modern">{region.icon}</div>
+                    <div className="option-image-container">
+                      <img 
+                        src={region.image} 
+                        alt={region.name}
+                        className="option-image"
+                        onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=Region'; }}
+                      />
+                    </div>
                     <div className="option-content">
                       <h4 className="option-title">{region.name}</h4>
                       <p className="option-description">{region.description}</p>
@@ -184,51 +250,34 @@ const ModernCropSuggestion = () => {
             </button>
           </form>
 
+          {/* Results */}
           {results.length > 0 && (
-            <motion.div 
-              className="modern-results-container"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            <div className="modern-results-container">
               <h3 className="results-title">AI-Powered Recommendations</h3>
               <div className="crop-results-grid">
                 {results.map((crop, index) => (
-                  <motion.div 
-                    key={index}
-                    className="modern-crop-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
+                  <div key={index} className="modern-crop-card">
                     <div className="crop-card-header">
-                      <img src={crop.image} alt={crop.name} className="modern-crop-image" />
+                      <img 
+                        src={crop.image} 
+                        alt={crop.name} 
+                        className="modern-crop-image" 
+                        onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=Crop'; }}
+                      />
                       <h3 className="crop-title">{crop.name}</h3>
                     </div>
                     <div className="crop-stats">
-                      <div className="stat-item">
-                        <span className="stat-label">Suitability:</span>
-                        <span className="stat-value">{crop.suitability}</span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Water Needs:</span>
-                        <span className="stat-value">{crop.water}</span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Harvest Time:</span>
-                        <span className="stat-value">{crop.harvest}</span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Market Price:</span>
-                        <span className="stat-value">{crop.price}</span>
-                      </div>
+                      <div className="stat-item"><span className="stat-label">Suitability:</span> <span className="stat-value">{crop.suitability}</span></div>
+                      <div className="stat-item"><span className="stat-label">Water Needs:</span> <span className="stat-value">{crop.water}</span></div>
+                      <div className="stat-item"><span className="stat-label">Harvest Time:</span> <span className="stat-value">{crop.harvest}</span></div>
+                      <div className="stat-item"><span className="stat-label">Market Price:</span> <span className="stat-value">{crop.price}</span></div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

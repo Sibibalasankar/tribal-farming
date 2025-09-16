@@ -1,5 +1,144 @@
-/* Crop Suggestion Page Specific Styles */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Smooth Animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Selection Styles */
+::selection {
+  background: rgba(0, 255, 135, 0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 135, 0.3);
+  color: #ffffff;
+}
+
+/* Image Loading States */
+.option-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 255, 0.1) 75%, 
+    transparent 75%
+  );
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.option-image[src=""], .option-image:not([src]) {
+  opacity: 0;
+}
+
+.option-image[src=""]:before, .option-image:not([src]):before {
+  opacity: 1;
+}
+
+/* Enhanced hover effects for better user experience */
+.modern-option-card:hover .option-image-container {
+  box-shadow: 0 8px 25px rgba(0, 255, 135, 0.2);
+  border-color: rgba(0, 255, 135, 0.3);
+}
+
+/* Accessibility improvements */
+.modern-option-card:focus {
+  outline: 2px solid #00ff87;
+  outline-offset: 2px;
+}
+
+.modern-submit-btn:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Dark mode optimizations (already implemented but adding fallbacks) */
+@media (prefers-color-scheme: dark) {
+  .crop-suggestion-page {
+    background: #0a0a0a;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .modern-option-card {
+    border-width: 3px;
+  }
+  
+  .modern-option-card.selected {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .option-title {
+    color: #ffffff;
+  }
+  
+  .stat-value {
+    color: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .modern-option-card,
+  .modern-crop-card,
+  .modern-submit-btn,
+  .option-image,
+  .modern-crop-image {
+    transition: none;
+  }
+  
+  .floating-element {
+    animation: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .bg-animation {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .crop-suggestion-page {
+    background: white;
+    color: black;
+  }
+  
+  .bg-animation,
+  .floating-element {
+    display: none;
+  }
+  
+  .modern-form-container,
+  .modern-results-container {
+    background: white;
+    border: 1px solid black;
+    box-shadow: none;
+  }
+} 
+Crop Suggestion Page Specific Styles */
+
 
 /* Page Container */
 .crop-suggestion-page {
@@ -171,15 +310,33 @@
   font-size: 0.8rem;
   font-weight: bold;
   color: #0a0a0a;
+  z-index: 2;
+}
+
+/* Option Image Container - NEW */
+.option-image-container {
+  min-width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.option-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.modern-option-card:hover .option-image {
+  transform: scale(1.05);
 }
 
 /* Option Card Content */
-.option-icon-modern {
-  font-size: 2.5rem;
-  min-width: 60px;
-  text-align: center;
-}
-
 .option-content {
   flex: 1;
 }
@@ -470,6 +627,16 @@
     text-align: center;
     gap: 1rem;
   }
+  
+  .modern-option-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .option-image-container {
+    align-self: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -484,31 +651,11 @@
   
   .modern-option-card {
     padding: 1rem;
-    flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
+  }
+  
+  .option-image-container {
+    min-width: 60px;
+    height: 60px;
   }
 }
 
-/* Smooth Animations */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Custom Selection Styles */
-::selection {
-  background: rgba(0, 255, 135, 0.3);
-  color: #ffffff;
-}
-
-::-moz-selection {
-  background: rgba(0, 255, 135, 0.3);
-  color: #ffffff;
-}
