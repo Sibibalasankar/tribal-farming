@@ -6,25 +6,25 @@ const About = () => {
     {
       name: 'Sibi B S',
       role: 'Agricultural Expert',
-      image: 'https://source.unsplash.com/300x300/?farmer',
+      image: '/profile/sibi.jpg',
       description: '10+ years experience in sustainable farming practices'
     },
     {
       name: 'Hariharan S',
       role: 'Technology Specialist',
-      image: 'https://source.unsplash.com/300x300/?technologist',
+      image: '/profile/hari.jpg',
       description: 'Bridging the gap between technology and agriculture'
     },
     {
       name: 'HariKrishnan S',
       role: 'Data Scientist',
-      image: 'https://source.unsplash.com/300x300/?data-scientist',
+      image: '/profile/HK.jpg',
       description: 'Expert in AI and predictive analytics for crop yields'
     },
     {
       name: 'Priyanka R',
       role: 'Community Manager',
-      image: 'https://source.unsplash.com/300x300/?community-manager',
+      image: '/profile/PR.jpg',
       description: 'Connecting farmers and building supportive communities'
     }
   ];

@@ -25,21 +25,21 @@ const TransportPooling = () => {
     {
       title: 'Available Transports',
       description: 'View available transportation options in your area.',
-      image: 'https://source.unsplash.com/300x200/?truck',
+      image: '/Transportation/a.jpg',
       buttonText: 'View Options',
       id: 'available'
     },
     {
       title: 'Share Your Transport',
       description: 'Have extra space? Offer it to other farmers.',
-      image: 'https://source.unsplash.com/300x200/?delivery',
+      image: '/Transportation/e.jpg',
       buttonText: 'Offer Space',
       id: 'share'
     },
     {
       title: 'Schedule Pickup',
       description: 'Plan your transportation in advance.',
-      image: 'https://source.unsplash.com/300x200/?calendar',
+      image: '/Transportation/ST.jpg',
       buttonText: 'Schedule Now',
       id: 'schedule'
     }

@@ -3,18 +3,18 @@ import '../styles/CropInfo.css'; // Modern theme CSS
 
 const CropInfo = () => {
   const crops = [
-    { name: 'Millet', image: 'https://source.unsplash.com/300x300/?millet', price: '₹200/kg', season: 'Monsoon' },
-    { name: 'Buckwheat', image: 'https://source.unsplash.com/300x300/?buckwheat', price: '₹250/kg', season: 'Winter' },
-    { name: 'Quinoa', image: 'https://source.unsplash.com/300x300/?quinoa', price: '₹350/kg', season: 'Summer' },
-    { name: 'Barley', image: 'https://source.unsplash.com/300x300/?barley', price: '₹150/kg', season: 'Winter' },
-    { name: 'Lentils', image: 'https://source.unsplash.com/300x300/?lentils', price: '₹180/kg', season: 'Winter' },
-    { name: 'Herbs', image: 'https://source.unsplash.com/300x300/?herbs', price: '₹400/kg', season: 'Spring' },
-    { name: 'Wheat', image: 'https://source.unsplash.com/300x300/?wheat', price: '₹220/kg', season: 'Rabi' },
-    { name: 'Maize', image: 'https://source.unsplash.com/300x300/?maize', price: '₹210/kg', season: 'Kharif' },
-    { name: 'Chickpeas', image: 'https://source.unsplash.com/300x300/?chickpeas', price: '₹300/kg', season: 'Rabi' },
-    { name: 'Tomatoes', image: 'https://source.unsplash.com/300x300/?tomatoes', price: '₹50/kg', season: 'All Seasons' },
-    { name: 'Potatoes', image: 'https://source.unsplash.com/300x300/?potatoes', price: '₹40/kg', season: 'All Seasons' },
-    { name: 'Spinach', image: 'https://source.unsplash.com/300x300/?spinach', price: '₹60/kg', season: 'Monsoon' },
+    { name: 'Millet', image: '/crop/Millet.jpg', price: '₹200/kg', season: 'Monsoon' },
+    { name: 'Buckwheat', image: '/crop/Buckwheat.jpg', price: '₹250/kg', season: 'Winter' },
+    { name: 'Quinoa', image: '/crop/Quinoa.jpg', price: '₹350/kg', season: 'Summer' },
+    { name: 'Barley', image: '/crop/Barley.jpg', price: '₹150/kg', season: 'Winter' },
+    { name: 'Lentils', image: '/crop/Lentils.jpg', price: '₹180/kg', season: 'Winter' },
+    { name: 'Herbs', image: '/crop/Herbs.jpg', price: '₹400/kg', season: 'Spring' },
+    { name: 'Wheat', image: '/crop/Wheat.jpg', price: '₹220/kg', season: 'Rabi' },
+    { name: 'Maize', image: '/crop/Maize.png', price: '₹210/kg', season: 'Kharif' },
+    { name: 'Rice', image: '/crop/rice.jpg', price: '₹30/kg', season: 'Rabi' },
+    { name: 'Tomatoes', image: '/crop/Tomato.jpg', price: '₹50/kg', season: 'All Seasons' },
+    { name: 'Potatoes', image: '/crop/Potato.jpg', price: '₹40/kg', season: 'All Seasons' },
+    { name: 'Spinach', image: '/crop/Lentils.jpg', price: '₹60/kg', season: 'Monsoon' },
   ];
 
   return (

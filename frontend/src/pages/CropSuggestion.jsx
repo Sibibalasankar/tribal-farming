@@ -129,7 +129,7 @@ const cropImages = {
         suitability: 'High',
         water: 'Moderate',
         harvest: '90-120 days',
-        price: '$' + (Math.random() * 5 + 1).toFixed(2) + '/kg'
+        price: '₹' + (Math.random() * 5 + 1).toFixed(2) + '/kg'
       }));
 
       setResults(resultsWithDetails);
