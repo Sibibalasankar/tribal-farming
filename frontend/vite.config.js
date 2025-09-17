@@ -1,10 +1,24 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/_redirects',
+          dest: '' // copy to root of dist
+        }
+      ]
+    })
+  ],
+  base: "/",
   build: {
-    outDir: 'dist', // make sure matches your Render settings
+    outDir: "dist",
   },
-  base: '/', // important for SPA
+  server: {
+    historyApiFallback: true,
+  },
 });
